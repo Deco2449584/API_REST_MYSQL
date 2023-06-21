@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Empleados</h1>
+    <table id="employee-table">
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Cargo</th>
+      </tr>
+    </table>
+
+    <script>
+      // Realizar una llamada a la API REST para recuperar los datos de los empleados
+      fetch("http://localhost:3000/api/employes")
+        .then((response) => response.json())
+        .then((data) => {
+          // Recuperar la tabla de empleados
+          const table = document.querySelector("#employe-table");
+
+          // Iterar a través de los datos de los empleados y agregar filas a la tabla
+          data.forEach((employe) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${employe.name}</td>
+              <td>${employe.age}</td>
+              <td>${employe.position}</td>
+            `;
+            table.appendChild(row);
+          });
+        });
+    </script>
+  </body>
+</html>

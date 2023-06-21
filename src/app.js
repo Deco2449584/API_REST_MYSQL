@@ -1,15 +1,18 @@
+import express from "express";
+import employesRoutes from "./routes/employes.routes.js";
+import indexRoutes from "./routes/index.routes.js";
+const app = express();
+app.use(express.json());
+app.use(indexRoutes);
+app.use("/api", employesRoutes);
+app.use(express.static("public"));
+app.use((req, res, next) => {
+  res.status(404).json({
+    message: "end point not found",
+  });
+});
 
-import express from 'express'
-import employesRoutes from './routes/employes.routes.js'
-import indexRoutes from './routes/index.routes.js'
-const app = express()
-app.use(express.json())
-app.use(indexRoutes)
-app.use('/api',employesRoutes)
-app.use((req,res, next) => {
-    res.status(404).json({
-        message: 'end point not found'
-    })
-})
-
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 export default app;

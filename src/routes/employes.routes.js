@@ -1,13 +1,19 @@
-import { Router } from "express"
-import {getEmployes,createEmploye,actualizandoEmploye,eliminandoEmploye,getEmploye,eliminandoEmploy} from '../controllers/employes.controlers.js'
-const router = Router()
-   
-router.get('/employees', getEmployes)
-router.get('/employees/:id', getEmploye)
-router.post('/employees',createEmploye)
-router.patch('/employees/:id', actualizandoEmploye)
-router.delete('/employees', eliminandoEmploye)
-router.delete('/employees/:id', eliminandoEmploy)
+import { Router } from "express";
+import {
+  getEmployes,
+  createEmploye,
+  actualizandoEmploye,
+  eliminandoEmploye,
+  getEmploye,
+  eliminandoEmploy,
+} from "../controllers/employes.controlers.js";
+const router = Router();
 
+router.get("/employes", getEmployes);
+router.get("/employes/:id", getEmploye);
+router.post("/employes", createEmploye);
+router.patch("/employes/:id", actualizandoEmploye);
+router.delete("/employes", eliminandoEmploye);
+router.delete("/employes/:id", eliminandoEmploy);
 
-export default router
+export default router;
